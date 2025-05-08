@@ -2,10 +2,20 @@ import pygame
 import random as rand
 
 
-#pygame setup
+
+# each in-game pixel will be 20px by 20px.
+
+
+blockTypes = ["Square","Line","Tshape","rightL","leftL"]
+
+
+    #pygame setup
 pygame.init()
-screen = pygame.display.set_mode((1280,720))
+    #sets window to 200px by 600px, or 10 blocks by 30 blocks.
+screen = pygame.display.set_mode((200,600))
+    #initializes clock for framerate
 clock = pygame.time.Clock()
+    #sets gamestate as running, enabling while loop
 running = True
 
 
@@ -14,14 +24,28 @@ running = True
 
 
 
+
+
+
+
+
+
+
+
+
 class block:
-    def __init__(self,pos,rotation,color):
+    def __init__(self,pos,type,rotation,moving):
         self.pos = pos
         self.rotation = rotation
-        self.color = color
-        pygame.draw.rect(screen,color,(10,10),pos)
+        self.type = type
+        if self.type == "Square":
+            pygame.draw.rect(screen,"red",(40,40),pos)
 
-
+        if self.type == "Tshape":
+            posX , posY = self.pos
+            pygame.draw.rect(screen,"orange",(60,20),pos)
+        
+            pygame.draw.rect(screen,"orange",(20,20),(posX + 20, posY + 20))
 
     #movement subclasses
 
@@ -45,6 +69,14 @@ class block:
         self.y += value
         self.pos = self.x , self.y
 
+    def collision(self,bool):
+        self.collision = bool
+
+
+    
+
+
+
 
 
 while running:
@@ -53,9 +85,8 @@ while running:
             running = False
 
 
-    player = block((200,200),0,"Gray")
+    activeBlock = block((200,200),0,"Gray",True)
     
-
 
 
 
