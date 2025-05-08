@@ -1,0 +1,25 @@
+
+spawn random block
+
+make block fall
+
+make blocks rotate
+    rotate object? seperate sprites for each rotation?
+
+move block with arrow keys
+
+array to keep track of what spaces are filled
+
+    only update array when a new block spawns, to reduce lag
+
+make blocks freeze in place when they hit the bottom, then spawn a new block
+
+make blocks collide with eachother
+
+clear lines when row is full
+    blocks need to be seperate pieces so when a line is cleared it doesn't delete the whole block.
+        maybe move whole block, but once block lands delete block and replace with individual cubes.
+
+
+
+make blocks drop down when a row is cleared
